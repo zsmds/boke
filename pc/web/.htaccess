@@ -1,0 +1,10 @@
+#重写开关 on 开启 off 关闭  作用就是方便的开启或关闭以下的语句 这样就不需要一条条注释了
+RewriteEngine On
+
+#如果是一个目录或则文件 就访问目录或文件
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#如果文件存在 就直接访问文件 不进行下面的RewriteRule
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule . index.php

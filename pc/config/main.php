@@ -9,6 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-pc',
     'basePath' => dirname(__DIR__),
+    'language'=>'zh-CN', //中文
     'bootstrap' => ['log'],
     'controllerNamespace' => 'pc\controllers',
     'components' => [
@@ -23,6 +24,24 @@ return [
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-pc',
+        ],
+        'urlManager'=>[
+            'enablePrettyUrl'=>true,
+            'showScriptName'=>false,
+            // 'suffix'=>'.html',
+        ],
+        //语言包配置
+        'i18n'=>[
+            'translations'=>[
+                '*'=>[
+                    'class'=>'yii\i18n\PhpMessageSource',
+                    'fileMap'=>[
+                        //可在这边配置多个语言包 随时切换
+                        //'test'=>'test.php'
+                        'common'=>'common.php',
+                    ]
+                ]
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
