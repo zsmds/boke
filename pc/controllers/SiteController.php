@@ -4,10 +4,9 @@ namespace pc\controllers;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+use pc\models\LoginForm;
 use pc\models\PasswordResetRequestForm;
 use pc\models\ResetPasswordForm;
 use pc\models\SignupForm;
@@ -16,7 +15,7 @@ use pc\models\ContactForm;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     /**
      * @inheritdoc

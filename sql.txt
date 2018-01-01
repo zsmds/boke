@@ -1,60 +1,60 @@
 CREATE TABLE `user`(
-`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '×ÔÔöID',
-`username` varchar(255) NOT NULL COMMENT 'ÓÃ»§Ãû',
-`auth_key` varchar(255) NOT NULL COMMENT '×Ô¶¯µÇÂ¼key',
-`password_hash` varchar(255) NOT NULL COMMENT '¼ÓÃÜÃÜÂë',
-`password_reset_token` varchar(255) DEFAULT NULL COMMENT 'ÖØÖÃÃÜÂëtoken',
-`email_validate_token` varchar(255) DEFAULT NULL COMMENT 'ÓÊÏäÑéÖ¤token',
-`email` varchar(255) NOT NULL COMMENT 'ÓÊÏä',
-`role` smallint(6) NOT NULL DEFAULT '10' COMMENT '½ÇÉ«µÈ¼¶',
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ï¿½ï¿½ï¿½ï¿½ID',
+`username` varchar(255) NOT NULL COMMENT 'ï¿½Ã»ï¿½ï¿½ï¿½',
+`auth_key` varchar(255) NOT NULL COMMENT 'ï¿½Ô¶ï¿½ï¿½ï¿½Â¼key',
+`password_hash` varchar(255) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+`password_reset_token` varchar(255) DEFAULT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½token',
+`email_validate_token` varchar(255) DEFAULT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤token',
+`email` varchar(255) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½',
+`role` smallint(6) NOT NULL DEFAULT '10' COMMENT 'ï¿½ï¿½É«ï¿½È¼ï¿½',
 `status` smallint(6) NOT NULL DEFAULT '10' COMMENT '×´Ì¬',
-`avatar` varchar(255) DEFAULT NULL COMMENT 'Í·Ïñ',
-`vip_lv` int(11) DEFAULT '0' COMMENT 'vipµÈ¼¶',
-`created_at` int(11) NOT NULL COMMENT '´´½¨Ê±¼ä',
+`avatar` varchar(255) DEFAULT NULL COMMENT 'Í·ï¿½ï¿½',
+`vip_lv` int(11) DEFAULT '0' COMMENT 'vipï¿½È¼ï¿½',
+`created_at` int(11) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½',
 `update_at` int(11) NOT NULL,
 PRIMARY KEY (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='»áÔ±±í';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ï¿½ï¿½Ô±ï¿½ï¿½';
 
 
 
-CREATE TABLE `posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '×ÔÔöID',
-  `title` varchar(255) DEFAULT NULL COMMENT '±êÌâ',
-  `summary` varchar(255) DEFAULT NULL COMMENT 'ÕªÒª',
-  `content` text COMMENT 'ÄÚÈİ',
-  `label_img` varchar(255) DEFAULT NULL COMMENT '±êÇ©Í¼',
-  `cat_id` int(11) DEFAULT NULL COMMENT '·ÖÀàid',
-  `user_id` int(11) DEFAULT NULL COMMENT 'ÓÃ»§id',
-  `user_name` varchar(255) DEFAULT NULL COMMENT 'ÓÃ»§Ãû',
-  `is_valid` tinyint(1) DEFAULT '0' COMMENT 'ÊÇ·ñÓĞĞ§£º0-Î´·¢²¼ 1-ÒÑ·¢²¼',
-  `created_at` int(11) DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `updated_at` int(11) DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
+CREATE TABLE `article` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'è‡ªå¢ID',
+  `title` varchar(255) DEFAULT NULL COMMENT 'æ ‡é¢˜',
+  `summary` varchar(255) DEFAULT NULL COMMENT 'æ‘˜è¦',
+  `content` text COMMENT 'å†…å®¹',
+  `label_img` varchar(255) DEFAULT NULL COMMENT 'æ ‡ç­¾å›¾',
+  `cat_id` int(11) DEFAULT NULL COMMENT 'åˆ†ç±»id',
+  `user_id` int(11) DEFAULT NULL COMMENT 'ç”¨æˆ·id',
+  `user_name` varchar(255) DEFAULT NULL COMMENT 'ç”¨æˆ·å',
+  `is_valid` tinyint(1) DEFAULT '0' COMMENT 'æ˜¯å¦æœ‰æ•ˆï¼š0-æœªå‘å¸ƒ 1-å·²å‘å¸ƒ',
+  `created_at` int(11) DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `updated_at` int(11) DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
   PRIMARY KEY (`id`),
   KEY `idx_cat_valid` (`cat_id`,`is_valid`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8 COMMENT='ÎÄÕÂÖ÷±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='æ–‡ç« ä¸»è¡¨';
 
 
 
 CREATE TABLE `cats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '×ÔÔöID',
-  `cat_name` varchar(255) DEFAULT NULL COMMENT '·ÖÀàÃû³Æ',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ï¿½ï¿½ï¿½ï¿½ID',
+  `cat_name` varchar(255) DEFAULT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='·ÖÀà±í';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 
 CREATE TABLE `tags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '×ÔÔöID',
-  `tag_name` varchar(255) DEFAULT NULL COMMENT '±êÇ©Ãû³Æ',
-  `post_num` int(11) DEFAULT '0' COMMENT '¹ØÁªÎÄÕÂÊı',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ï¿½ï¿½ï¿½ï¿½ID',
+  `tag_name` varchar(255) DEFAULT NULL COMMENT 'ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½',
+  `post_num` int(11) DEFAULT '0' COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
   PRIMARY KEY (`id`),
   UNIQUE KEY `tag_name` (`tag_name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='±êÇ©±í';
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='ï¿½ï¿½Ç©ï¿½ï¿½';
 
 
 CREATE TABLE `relation_post_tags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '×ÔÔöID',
-  `post_id` int(11) DEFAULT NULL COMMENT 'ÎÄÕÂID',
-  `tag_id` int(11) DEFAULT NULL COMMENT '±êÇ©ID',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ï¿½ï¿½ï¿½ï¿½ID',
+  `post_id` int(11) DEFAULT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ID',
+  `tag_id` int(11) DEFAULT NULL COMMENT 'ï¿½ï¿½Ç©ID',
   PRIMARY KEY (`id`),
   UNIQUE KEY `post_id` (`post_id`,`tag_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8 COMMENT='ÎÄÕÂºÍ±êÇ©¹ØÏµ±í';
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8 COMMENT='ï¿½ï¿½ï¿½ÂºÍ±ï¿½Ç©ï¿½ï¿½Ïµï¿½ï¿½';

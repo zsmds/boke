@@ -3,6 +3,7 @@ namespace pc\models;
 
 use Yii;
 use yii\base\Model;
+use common\models\User;
 
 /**
  * Login form
@@ -62,6 +63,14 @@ class LoginForm extends Model
         return false;
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'username'=>'用户名',
+            'email'=>'邮箱',
+            'password'=>'密码',
+        ];
+    }
     /**
      * Finds user by [[username]]
      *

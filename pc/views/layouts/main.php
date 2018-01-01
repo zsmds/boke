@@ -35,27 +35,31 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
+    $leftmenuItems = [
         ['label' => Yii::t('common','Home'), 'url' => ['/site/index']],
-        ['label' => Yii::t('common','About'), 'url' => ['/site/about']],
-        ['label' => Yii::t('common','Contact'), 'url' => ['/site/contact']],
+        ['label' => '文章', 'url' => ['/article/index']],
     ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => Yii::t('common','Signup'), 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => Yii::t('common','Login'), 'url' => ['/site/login']];
+    if (Yii::$app->user->isGuest) {  //如果是游客
+        $righmenuItems[] = ['label' => Yii::t('common','Signup'), 'url' => ['/site/signup']];
+        $righmenuItems[] = ['label' => Yii::t('common','Login'), 'url' => ['/site/login']];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
+        $righmenuItems[] = [
+            'label'=> '<img src="'.Yii::$app->params['avatar']['small'].'" alt="'.Yii::$app->user->identity->username.'">',
+            'linkOptions'=>['class'=>'avatar'],
+            'items'=>[
+                ['label'=>'<i class="fa fa-sign-out"></i> 退出','url'=>['/site/logout'],'linkOptions'=>['data-method'=>'post'],]
+//                ['label'=>'个人中心','url'=>['/site/logout'],'linkOptions'=>['data-method'=>'post'],]  下拉框中的选项
+            ]
+        ];
     }
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
+        'options' => ['class' => 'navbar-nav navbar-left'],
+        'items' => $leftmenuItems,
+    ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right '],
+        'encodeLabels'=> false, //代码标签过滤关闭
+        'items' => $righmenuItems,
     ]);
     NavBar::end();
     ?>
